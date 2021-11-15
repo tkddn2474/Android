@@ -27,6 +27,15 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
+            android:name=".FindIDActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FindID2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".FindPWActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
     </application>
