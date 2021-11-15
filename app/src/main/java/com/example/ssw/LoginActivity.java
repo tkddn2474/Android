@@ -20,7 +20,7 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity {
     private EditText edit_id,edit_pw;
     private Button btn_login;
-    private TextView txt_found,txt_register;
+    private TextView txt_foundID, txt_foundPW, txt_register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +30,27 @@ public class LoginActivity extends AppCompatActivity {
         edit_id = findViewById(R.id.edit_id);
         edit_pw = findViewById(R.id.edit_pw);
         btn_login = findViewById(R.id.btn_login);
-        txt_found = findViewById(R.id.txt_found);
+        txt_foundID = findViewById(R.id.txt_foundID);
+        txt_foundPW = findViewById(R.id.txt_foundPW);
         txt_register = findViewById(R.id.txt_register);
 
+
+        txt_foundID.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, FindIDActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        txt_foundPW.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, FindPWActivity.class);
+                startActivity(intent);
+            }
+        });
 
         txt_register.setOnClickListener(new View.OnClickListener() {
             @Override

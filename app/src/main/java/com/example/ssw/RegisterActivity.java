@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Spinner;
 import android.view.View;
 import android.widget.Button;
+
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,9 +22,10 @@ import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private Spinner edit_month, edit_gender, edit_email_address;
     private EditText edit_id,edit_pw,edit_nick,edit_rpw;
     private TextView txt_passcheck,txt_nickcheck;
-    private Button btn_register;
+    private Button btn_register, prevBtnJoin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,57 @@ public class RegisterActivity extends AppCompatActivity {
         edit_nick = findViewById(R.id.edit_nick);
         txt_nickcheck = findViewById(R.id.txt_nickcheck);
         txt_passcheck = findViewById(R.id.txt_passcheck);
+        prevBtnJoin = findViewById(R.id.prevBtnJoin);
+
+
+        edit_month = (Spinner)findViewById(R.id.edit_month);
+        edit_gender = (Spinner)findViewById(R.id.edit_gender);
+        edit_email_address = (Spinner)findViewById(R.id.edit_email_address);
+
+
+        String[] list1 = new String[13];
+        list1[0] = "월";
+        list1[1] = "1";
+        list1[2] = "2";
+        list1[3] = "3";
+        list1[4] = "4";
+        list1[5] = "5";
+        list1[6] = "6";
+        list1[7] = "7";
+        list1[8] = "8";
+        list1[9] = "9";
+        list1[10] = "10";
+        list1[11] = "11";
+        list1[12] = "12";
+
+
+        //input array data
+        String[] list2 = new String[3];
+        list2[0] = "성별";
+        list2[1] = "남";
+        list2[2] = "여";
+
+        String[] list3 = new String[4];
+        list3[0] = "naver.com";
+        list3[1] = "daum.net";
+        list3[2] = "gmail.com";
+        list3[3] = "net.com";
+
+
+        /*
+        String[] list2 = new String[2];
+        list2[0] = "안녕";
+        list2[1] = "하세요";
+        */
+
+        //using ArrayAdapter
+        ArrayAdapter spinnerAdapter;
+        spinnerAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, list1);
+        edit_month.setAdapter(spinnerAdapter);
+        spinnerAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, list2);
+        edit_gender.setAdapter(spinnerAdapter);
+        spinnerAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, list3);
+        edit_email_address.setAdapter(spinnerAdapter);
 
         /*
         edit_pw.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -86,6 +141,13 @@ public class RegisterActivity extends AppCompatActivity {
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
 
+                prevBtnJoin.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        onBackPressed();
+                    }
+                });
 
             }
         });
