@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_Navi);
 
+        //main_frame회면으로 바로 이동시켜줌
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,new Frag_home()).commit();
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
