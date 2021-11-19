@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,8 +27,9 @@ public class Frag_home extends Fragment {
     BottomNavigationView bottomNavigationView;
     TextView txt_id,txt_pw;
     Context ct;
+    Button btn1;
 
-
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.frag_home, container, false);
@@ -34,13 +37,14 @@ public class Frag_home extends Fragment {
         txt_pw = v.findViewById(R.id.txt_pw);
         String id = txt_id.getText().toString();
         String pw = txt_pw.getText().toString();
+        btn1= v.findViewById(R.id.btn1);
 
         ct = container.getContext();
 
 
 
 
-        Response.Listener<String> responseListener = new Response.Listener<String>() {
+       /* Response.Listener<String> responseListener = new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -58,10 +62,18 @@ public class Frag_home extends Fragment {
                 }
 
             }
-        };
+        };*/
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Writing.class);
+                startActivity(intent);
+            }
+        });
 
 
+        return v;
 
-        return inflater.inflate(R.layout.frag_home,container,false);
+
     }
 }
