@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Spinner;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +24,7 @@ import org.json.JSONObject;
 public class RegisterActivity extends AppCompatActivity {
 
     private Spinner edit_month, edit_gender, edit_email_address;
-    private EditText edit_id,edit_pw,edit_nick,edit_rpw;
+    private EditText edit_id,edit_pw,edit_nick,edit_rpw,edit_year,edit_name,edit_day,edit_email;
     private TextView txt_passcheck,txt_nickcheck;
     private Button btn_register, prevBtnJoin;
     @Override
@@ -41,11 +42,16 @@ public class RegisterActivity extends AppCompatActivity {
         edit_month = (Spinner)findViewById(R.id.edit_month);
         edit_gender = (Spinner)findViewById(R.id.edit_gender);
         edit_email_address = (Spinner)findViewById(R.id.edit_email_address);
+        edit_year = findViewById(R.id.edit_year);
+        edit_name = findViewById(R.id.edit_name);
+        edit_day = findViewById(R.id.edit_day);
+        edit_email = findViewById(R.id.edit_email);
+
 
 
         String[] list1 = {"월","1","2","3","4","5","6","7","8","9","10","11","12"};
         String[] list2 = {"성별","남","여"};
-        String[] list3 = {"월","naver.com","daum.net","gmail.com","net.com"};
+        String[] list3 = {"이메일","naver.com","daum.net","gmail.com","net.com"};
 
 
         //using ArrayAdapter
@@ -64,6 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if(hasFocus==false){
                     String pass = edit_pw.getText().toString();
                     String repass = edit_rpw.getText().toString();
+
                     if(pass.equals(repass)){
                         txt_passcheck.setText("비밀번호가 일치합니다");
                     } else{
@@ -90,6 +97,17 @@ public class RegisterActivity extends AppCompatActivity {
                 String U_id = edit_id.getText().toString();
                 String U_pw = edit_pw.getText().toString();
                 String U_nick = edit_nick.getText().toString();
+                String U_name = edit_name.getText().toString();
+                String year = edit_year.getText().toString();
+                String month = edit_month.getSelectedItem().toString();
+                String day = edit_day.getText().toString();
+                String U_birth = year + "0" +month + day;
+                String mail = edit_email.getText().toString();
+                String domain = edit_email_address.getSelectedItem().toString();
+                String U_email = mail + "@" + domain;
+                String U_gender = edit_gender.getSelectedItem().toString();
+
+
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -97,6 +115,8 @@ public class RegisterActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
+
+
                             if(success) {
                                 Toast.makeText(getApplicationContext(), "회원 등록 성공", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
@@ -110,9 +130,11 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 };
 
-                RegisterRequest registerRequest = new RegisterRequest(U_id,U_pw,U_nick,responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(U_id,U_pw,U_nick,U_name,U_gender,U_birth,U_email,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
+
+
 
 
 
