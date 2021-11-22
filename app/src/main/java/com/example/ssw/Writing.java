@@ -48,7 +48,7 @@ public class Writing extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = getIntent();
-                String U_id = intent.getStringExtra("U_id");
+
                 String B_content= edit_content.getText().toString();
                 String B_title = edit_title.getText().toString();
 
