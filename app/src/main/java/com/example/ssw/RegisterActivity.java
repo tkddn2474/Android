@@ -25,8 +25,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     private Spinner edit_month, edit_gender, edit_email_address;
     private EditText edit_id,edit_pw,edit_nick,edit_rpw,edit_year,edit_name,edit_day,edit_email;
-    private TextView txt_passcheck,txt_nickcheck;
-    private Button btn_register, prevBtnJoin;
+    private TextView txt_passcheck,txt_nickcheck,txt_idcheck;
+    private Button btn_register, prevBtnJoin,btn_id_check;
+
+    Boolean check_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,8 @@ public class RegisterActivity extends AppCompatActivity {
         edit_name = findViewById(R.id.edit_name);
         edit_day = findViewById(R.id.edit_day);
         edit_email = findViewById(R.id.edit_email);
+        btn_id_check = findViewById(R.id.btn_id_check);
+        txt_idcheck = findViewById(R.id.txt_idcheck);
 
 
 
@@ -86,6 +90,37 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 onBackPressed();
+            }
+        });
+
+        btn_id_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String U_id = edit_id.getText().toString();
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject1 = new JSONObject(response);
+                            boolean success = jsonObject1.getBoolean("success");
+                            String id = jsonObject1.getString("U_id");
+
+                            if(U_id.equals(id)){
+                                txt_idcheck.setText(id);
+                            }else{
+                                txt_idcheck.setText("사용가능한 아이디");
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                Check_id check_id = new Check_id(U_id,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
+                queue.add(check_id);
             }
         });
 

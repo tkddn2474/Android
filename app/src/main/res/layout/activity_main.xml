@@ -18,7 +18,10 @@
         android:layout_centerHorizontal="true"
         app:menu="@menu/main_navi"
         />
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt1"/>
     <FrameLayout
         android:id="@+id/main_frame"
         android:layout_width="match_parent"

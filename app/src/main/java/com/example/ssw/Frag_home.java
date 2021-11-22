@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class Frag_home extends Fragment {
     TextView txt_id,txt_pw;
     private String s;
     private static Context context;
+    Button btn1;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,49 +38,24 @@ public class Frag_home extends Fragment {
         txt_id = v.findViewById(R.id.txt_id);
         txt_pw = v.findViewById(R.id.txt_pw);
         context = container.getContext();
-
-        String id = txt_id.getText().toString();
-        String pw = txt_pw.getText().toString();
-
-        Bundle bundle = new Bundle();
-
-        String a = bundle.getString("U_id","0");
-
-        if (getArguments() != null) {
-            s = getArguments().getString("U_id");
-        }else{
-            s = "값이 없어";
-        }
-
-        txt_id.setText(a);
+        btn1 = v.findViewById(R.id.btn1);
 
 
-        Response.Listener<String> responseListener = new Response.Listener<String>() {
+        Bundle bundle = getArguments();
 
+        String U_id = bundle.getString("U_id");
+
+        txt_id.setText(U_id);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(String response) {
-                JSONObject jsonObject = null;
-                try {
-                    jsonObject = new JSONObject(response);
-                    String U_id = jsonObject.getString("U_id");
-                    String U_pw = jsonObject.getString("U_pw");
-                    Log.d("전돼지", response);
-                    Log.d("수환이는 슈퍼 돼지", jsonObject.getString("U_id"));
-                    //txt_id.setText(U_id);
-                    //txt_pw.setText(U_pw);
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Writing.class);
+                intent.putExtra("U_id",U_id);
+                startActivity(intent);
             }
-        };
-        LoginRequest loginRequest = new LoginRequest("aa","aa",responseListener);
-        RequestQueue queue = Volley.newRequestQueue(context);
-        queue.add(loginRequest);
+        });
 
-        Toast.makeText(context, id+pw, Toast.LENGTH_SHORT).show();
 
         return v;
     }
