@@ -1,42 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     >
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="아이디"
-        android:textSize="30dp"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txt_id"
+        <TextView
+            android:id="@+id/txt_town"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="능곡동"
+            android:textStyle="bold"
+            android:textSize="25dp" />
+    <ListView
+        android:id="@+id/list_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="30dp"
-        />
+        android:layout_height="match_parent"
+/>
+    </LinearLayout>
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="비밀번호"
-        android:textSize="30dp"
-        />
+        android:layout_height="match_parent"
+        android:gravity="right"
+        android:paddingBottom="70dp"
+        android:paddingRight="20dp"
+       >
 
-    <TextView
-        android:id="@+id/txt_pw"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        />
+        <Button
+            android:id="@+id/btn_Write"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#74852D"
+            android:text="글쓰기"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn1"/>
-
-</LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

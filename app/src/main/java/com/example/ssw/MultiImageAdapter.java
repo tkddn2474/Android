@@ -54,6 +54,7 @@ public class MultiImageAdapter extends RecyclerView.Adapter<MultiImageAdapter.Vi
     public void onBindViewHolder(MultiImageAdapter.ViewHolder holder, int position) {
         Uri image_uri = mData.get(position) ;
 
+        
         Glide.with(mContext)
                 .load(image_uri)
                 .into(holder.image);

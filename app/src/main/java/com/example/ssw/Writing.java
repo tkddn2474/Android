@@ -44,47 +44,9 @@ public class Writing extends AppCompatActivity {
         edit_content = findViewById(R.id.edit_content);
         edit_title = findViewById(R.id.edit_title);
 
-        btn_fin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = getIntent();
-
-                String B_content= edit_content.getText().toString();
-                String B_title = edit_title.getText().toString();
 
 
-
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
-
-
-                            if(success) {
-                                Toast.makeText(getApplicationContext(), "등록 완료", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(Writing.this, MainActivity.class);
-                               // intent.putExtra("U_id",U_id);
-                                startActivity(intent);
-                            }else {
-                                Toast.makeText(getApplicationContext(), "등록 실패", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
-
-                WritingRequest writingRequest = new WritingRequest(U_id,B_content,B_title,responseListener);
-                RequestQueue queue = Volley.newRequestQueue(Writing.this);
-                queue.add(writingRequest);
-
-
-            }
-        });
-
-     /*   Button btn_photo = findViewById(R.id.btn_photo);
+        Button btn_photo = findViewById(R.id.btn_photo);
         btn_photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +74,6 @@ public class Writing extends AppCompatActivity {
                 Log.e("single choice: ", String.valueOf(data.getData()));
                 Uri imageUri = data.getData();
                 uriList.add(imageUri);
-
                 adapter = new MultiImageAdapter(uriList, getApplicationContext());
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
@@ -142,8 +103,49 @@ public class Writing extends AppCompatActivity {
                     recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));     // 리사이클러뷰 수평 스크롤 적용
                 }
             }
-        }*/
+        }
+        btn_fin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = getIntent();
+                String U_id = intent.getStringExtra("U_id");
+                String B_content= edit_content.getText().toString();
+                String B_title = edit_title.getText().toString();
+
+
+
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
+
+
+                            if(success) {
+                                Toast.makeText(getApplicationContext(), "등록 완료", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(Writing.this, MainActivity.class);
+                                // intent.putExtra("U_id",U_id);
+                                startActivity(intent);
+                            }else {
+                                Toast.makeText(getApplicationContext(), "등록 실패", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                WritingRequest writingRequest = new WritingRequest(U_id,B_content,B_title,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(Writing.this);
+                queue.add(writingRequest);
+
+
+            }
+        });
     }
+
 }
 
 
