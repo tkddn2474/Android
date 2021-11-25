@@ -1,6 +1,7 @@
 package com.example.ssw;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,13 +27,15 @@ public class MultiImageAdapter extends RecyclerView.Adapter<MultiImageAdapter.Vi
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView image;
+
+        public ImageView image;
 
         ViewHolder(View itemView) {
             super(itemView) ;
 
             // 뷰 객체에 대한 참조.
             image = itemView.findViewById(R.id.image);
+
         }
     }
 
@@ -54,7 +57,7 @@ public class MultiImageAdapter extends RecyclerView.Adapter<MultiImageAdapter.Vi
     public void onBindViewHolder(MultiImageAdapter.ViewHolder holder, int position) {
         Uri image_uri = mData.get(position) ;
 
-        
+
         Glide.with(mContext)
                 .load(image_uri)
                 .into(holder.image);
