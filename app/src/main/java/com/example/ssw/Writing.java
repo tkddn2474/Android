@@ -2,6 +2,7 @@ package com.example.ssw;
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -59,17 +60,6 @@ public class Writing extends AppCompatActivity {
         btn_photo = findViewById(R.id.btn_photo);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
 
-        btn_photo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
-                intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                startActivityForResult(intent, 2222);
-            }
-        });
-
         btn_fin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +80,7 @@ public class Writing extends AppCompatActivity {
                             if (success) {
                                 Toast.makeText(getApplicationContext(), "등록 완료", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(Writing.this, MainActivity.class);
-                                // intent.putExtra("U_id",U_id);
+                                intent.putExtra("U_id", U_id);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(getApplicationContext(), "등록 실패", Toast.LENGTH_SHORT).show();
@@ -108,6 +98,19 @@ public class Writing extends AppCompatActivity {
 
             }
         });
+
+        btn_photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+                intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                startActivityForResult(intent, 2222);
+            }
+        });
+
+
     }
 
     // 앨범에서 액티비티로 돌아온 후 실행되는 메서드
@@ -148,9 +151,7 @@ public class Writing extends AppCompatActivity {
                     recyclerView.setAdapter(adapter);   // 리사이클러뷰에 어댑터 세팅
                 }
             }
-
         }
-
     }
 }
 

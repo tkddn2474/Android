@@ -54,7 +54,7 @@ public class Frag_home extends Fragment {
             }
         });
 
-
+//
         return v;
     }
 }

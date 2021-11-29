@@ -68,11 +68,11 @@ public class LoginActivity extends AppCompatActivity {
                 String U_pw = edit_pw.getText().toString();
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-              //  intent.putExtra("U_id",U_id);
-              //  intent.putExtra("U_pw",U_pw);
+                intent.putExtra("U_id",U_id);
+                intent.putExtra("U_pw",U_pw);
                 startActivity(intent);
 
-               /* Response.Listener<String> responseListener = new Response.Listener<String>() {
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                 };
                 LoginRequest loginRequest = new LoginRequest(U_id,U_pw,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
-                queue.add(loginRequest);*/
+                queue.add(loginRequest);
 
             }
         });
