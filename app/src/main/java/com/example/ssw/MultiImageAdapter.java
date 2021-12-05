@@ -47,9 +47,9 @@ public class MultiImageAdapter extends RecyclerView.Adapter<MultiImageAdapter.Vi
         Context context = parent.getContext() ;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) ;    // context에서 LayoutInflater 객체를 얻는다.
         View view = inflater.inflate(R.layout.multi_image_item, parent, false) ;	// 리사이클러뷰에 들어갈 아이템뷰의 레이아웃을 inflate.
-        MultiImageAdapter.ViewHolder vh = new MultiImageAdapter.ViewHolder(view) ;
+        MultiImageAdapter.ViewHolder vhtk = new MultiImageAdapter.ViewHolder(view) ;
 
-        return vh ;
+        return vhtk ;
     }
 
     // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.

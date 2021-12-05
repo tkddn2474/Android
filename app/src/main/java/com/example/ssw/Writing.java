@@ -155,4 +155,3 @@ public class Writing extends AppCompatActivity {
     }
 }
 
-

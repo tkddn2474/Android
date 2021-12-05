@@ -26,9 +26,10 @@ import org.json.JSONObject;
 public class Frag_home extends Fragment {
 
     BottomNavigationView bottomNavigationView;
-
+    TextView txt_id,txt_pw;
+    private String s;
     private static Context context;
-    Button btn_Write;
+    Button btn1;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,16 +37,14 @@ public class Frag_home extends Fragment {
         View v = inflater.inflate(R.layout.frag_home, container, false);
 
         context = container.getContext();
-        btn_Write = v.findViewById(R.id.btn_Write);
+        btn1 = v.findViewById(R.id.btn_Write);
 
 
         Bundle bundle = getArguments();
 
         String U_id = bundle.getString("U_id");
 
-
-
-        btn_Write.setOnClickListener(new View.OnClickListener() {
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), Writing.class);
