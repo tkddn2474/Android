@@ -29,6 +29,7 @@ public class RegisterRequest extends StringRequest {
 
     }
 
+
     @Override
     protected Map<String, String> getParams() throws AuthFailureError {
         return map;

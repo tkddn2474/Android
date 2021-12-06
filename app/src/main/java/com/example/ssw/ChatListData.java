@@ -17,3 +17,4 @@ public class ChatListData {
         this.txt_nickname = txt_nickname;
     }
 }
+

@@ -1,7 +1,9 @@
 package com.example.ssw;
 
+import android.Manifest;
 import android.content.ClipData;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.content.CursorLoader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,8 +49,9 @@ public class Writing extends AppCompatActivity {
     private EditText edit_title, edit_content;
     private Intent intent;
     private Uri imageUri;
-    Bitmap bitmap;
-    String encodeImageString;
+    private Bitmap bitmap;
+    private String encodeImageString;
+    private String imgPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,16 @@ public class Writing extends AppCompatActivity {
         btn_photo = findViewById(R.id.btn_photo);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
 
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            int permissionResult= checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            if(permissionResult== PackageManager.PERMISSION_DENIED){
+                String[] permissions= new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permissions,10);
+            }
+        }else{
+            //cv.setVisibility(View.VISIBLE);
+        }
+
         btn_fin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +81,7 @@ public class Writing extends AppCompatActivity {
                 String U_id = intent.getStringExtra("U_id");
                 String B_content = edit_content.getText().toString();
                 String B_title = edit_title.getText().toString();
+                String B_photo =imgPath;
 
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -91,7 +106,7 @@ public class Writing extends AppCompatActivity {
                     }
                 };
 
-                WritingRequest writingRequest = new WritingRequest(U_id, B_content, B_title, responseListener);
+                WritingRequest writingRequest = new WritingRequest(U_id, B_content, B_title,B_photo,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(Writing.this);
                 queue.add(writingRequest);
 
@@ -141,17 +156,30 @@ public class Writing extends AppCompatActivity {
                         Uri imageUri = clipData.getItemAt(i).getUri();  // 선택한 이미지들의 uri를 가져온다.
                         try {
                             uriList.add(imageUri);  //uri를 list에 담는다.
+                            imgPath= getRealPathFromUri(imageUri);
+                            edit_title.setText(imgPath);
 
                         } catch (Exception e) {
                             Log.e(TAG, "File select error", e);
-
                         }
                     }
                     adapter = new MultiImageAdapter(uriList, getApplicationContext());
                     recyclerView.setAdapter(adapter);   // 리사이클러뷰에 어댑터 세팅
+
                 }
             }
         }
+
+    }
+    String getRealPathFromUri(Uri uri){
+        String[] proj= {MediaStore.Images.Media.DATA};
+        CursorLoader loader= new CursorLoader(this, uri, proj, null, null, null);
+        Cursor cursor= loader.loadInBackground();
+        int column_index= cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String result= cursor.getString(column_index);
+        cursor.close();
+        return  result;
     }
 }
 

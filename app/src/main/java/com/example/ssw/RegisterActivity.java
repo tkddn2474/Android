@@ -1,5 +1,6 @@
 package com.example.ssw;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,12 +15,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.request.SimpleMultiPartRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -106,36 +112,31 @@ public class RegisterActivity extends AppCompatActivity {
                 String domain = edit_email_address.getSelectedItem().toString();
                 String U_email = mail + "@" + domain;
                 String U_gender = edit_gender.getSelectedItem().toString();
+                String URL = "http://3.36.197.241/Register.php";
 
 
 
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                SimpleMultiPartRequest smpr= new SimpleMultiPartRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
-
-                            if(success) {
-                                Toast.makeText(getApplicationContext(), "회원 등록 성공", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                            }else {
-                                Toast.makeText(getApplicationContext(), "회원 등록 실패", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
                     }
-                };
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                });
 
-                RegisterRequest registerRequest = new RegisterRequest(U_id,U_pw,U_nick,U_name,U_gender,U_birth,U_email,responseListener);
-                RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
-                queue.add(registerRequest);
+                smpr.addStringParam("U_id",U_id);
+                smpr.addStringParam("U_pw",U_pw);
+                smpr.addStringParam("U_nick",U_nick);
+                smpr.addStringParam("U_name",U_name);
+                smpr.addStringParam("U_gender",U_gender);
+                smpr.addStringParam("U_birth",U_birth);
+                smpr.addStringParam("U_email",U_email);
 
-
-
-
+                //요청객체를 서버로 보낼 우체통 같은 객체 생성
+                RequestQueue requestQueue= Volley.newRequestQueue(RegisterActivity.this);
+                requestQueue.add(smpr);
 
             }
 

@@ -35,7 +35,8 @@ public class Frag_chat extends Fragment {
     private ChatListAdapter chatListAdapter;
     private ListView listView;
     private static Context context;
-    String U_id = "";
+    String U_id;
+    Bundle bundle;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,11 +50,10 @@ public class Frag_chat extends Fragment {
 
 
 
-        //Bundle bundle = getArguments();
-        //String U_id = bundle.getString("U_id");
+        bundle = getArguments();
+        U_id = bundle.getString("U_id");
 
 
-        U_id = "bb";
 
         //이제 response로 데이터값 받아서 뿌려주기만 하면됨
         Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -80,7 +80,7 @@ public class Frag_chat extends Fragment {
             }
         };
 
-        ChatListReguest chatListReguest = new ChatListReguest("bb",responseListener);
+        ChatListReguest chatListReguest = new ChatListReguest(U_id,responseListener);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(chatListReguest);
 

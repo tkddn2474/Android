@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("U_id",U_id);
         frag_home.setArguments(bundle);
+        frag_chat.setArguments(bundle);
+
 
 
 

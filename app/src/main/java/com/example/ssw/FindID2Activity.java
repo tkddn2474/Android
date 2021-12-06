@@ -37,6 +37,7 @@ public class FindID2Activity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
 
+
                 onBackPressed();
             }
         });

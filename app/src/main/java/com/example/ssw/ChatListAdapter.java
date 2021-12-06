@@ -26,6 +26,7 @@ public class ChatListAdapter extends BaseAdapter {
     }
 
     @Override
+
     public Object getItem(int i) {
         return chatData.get(i);
     }

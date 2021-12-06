@@ -23,5 +23,6 @@ public class Check_nick extends StringRequest {
     @Override
     protected Map<String, String> getParams() throws AuthFailureError {
         return map;
+
     }
 }

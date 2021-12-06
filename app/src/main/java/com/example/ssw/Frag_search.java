@@ -18,3 +18,4 @@ public class Frag_search extends Fragment {
         return inflater.inflate(R.layout.frag_search,container,false);
     }
 }
+

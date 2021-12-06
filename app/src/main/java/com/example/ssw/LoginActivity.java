@@ -38,8 +38,6 @@ public class LoginActivity extends AppCompatActivity {
         txt_foundID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, FindIDActivity.class);
-                startActivity(intent);
             }
         });
 

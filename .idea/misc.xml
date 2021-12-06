@@ -4,17 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/drawable/ic_baseline_add_a_photo_24.xml" value="0.262037037037037" />
+        <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.3764102564102564" />
+        <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3764102564102564" />
         <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/activity_find_id.xml" value="0.26875" />
         <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/activity_find_id2.xml" value="0.26875" />
         <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/activity_find_pw.xml" value="0.26875" />
+        <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/activity_find_pw2.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/activity_login.xml" value="0.26875" />
         <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/activity_register.xml" value="0.2911458333333333" />
         <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/activity_writing.xml" value="0.26875" />
+        <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/chatlist_item.xml" value="0.275" />
         <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/frag_home.xml" value="0.26875" />
         <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/frag_my.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/frag_search.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/image_item.xml" value="0.275" />
+        <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/list_item.xml" value="0.33" />
         <entry key="..\:/Users/jk/AndroidStudioProjects/Android/app/src/main/res/layout/multi_image_item.xml" value="0.275" />
         <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.21927083333333333" />
@@ -26,13 +31,10 @@
         <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/layout/activity_login.xml" value="0.21603260869565216" />
         <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/layout/activity_register.xml" value="0.2017167381974249" />
-        <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/layout/chatlist_item.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/layout/frag_chat.xml" value="0.21197916666666666" />
         <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/layout/frag_home.xml" value="0.19375" />
         <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/layout/frag_my.xml" value="0.19375" />
         <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/layout/frag_search.xml" value="0.19375" />
-        <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/layout/list_item.xml" value="0.25679347826086957" />
-        <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/layout/multi_image_item.xml" value="0.25679347826086957" />
         <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/menu/main_navi.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/tkddn/AndroidStudioProjects/SSW/app/src/main/res/xml/network_security_config.xml" value="0.19123606889564337" />
       </map>
