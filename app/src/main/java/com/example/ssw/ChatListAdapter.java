@@ -19,7 +19,6 @@ public class ChatListAdapter extends BaseAdapter {
         this.chatData = chatData;
     }
 
-
     @Override
     public int getCount() {
         return chatData.size();

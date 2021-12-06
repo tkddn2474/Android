@@ -50,7 +50,7 @@ public class Frag_chat extends Fragment {
 
 
 
-        bundle = getArguments();
+        bunde = getArguments();
         U_id = bundle.getString("U_id");
 
 

@@ -15,7 +15,7 @@ public class Frag_my extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
-        Bundle bundle = getArguments();
+       Bundle bundle = getArguments();
 
         String U_id = bundle.getString("U_id");
 

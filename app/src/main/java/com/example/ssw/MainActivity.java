@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         intent = getIntent();
         String U_id = intent.getStringExtra("U_id");
 
+
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,frag_home).commit();
         //main_frame회면으로 바로 이동시켜줌
         Bundle bundle = new Bundle();

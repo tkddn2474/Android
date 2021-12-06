@@ -26,7 +26,6 @@ public class WritingRequest extends StringRequest {
         map.put("B_title",B_title);
         //map.put("B_cate",B_cate);
 
-
     }
 
     @Override

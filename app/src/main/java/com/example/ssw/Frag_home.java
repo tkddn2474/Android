@@ -40,7 +40,6 @@ public class Frag_home extends Fragment {
         btn1 = v.findViewById(R.id.btn_Write);
 
 
-
         Bundle bundle = getArguments();
 
         String U_id = bundle.getString("U_id");

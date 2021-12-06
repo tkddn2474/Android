@@ -110,7 +110,6 @@ public class Writing extends AppCompatActivity {
                 RequestQueue queue = Volley.newRequestQueue(Writing.this);
                 queue.add(writingRequest);
 
-
             }
         });
 

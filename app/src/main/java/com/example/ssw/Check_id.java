@@ -19,7 +19,6 @@ public class Check_id extends StringRequest {
         map = new HashMap<>();
         map.put("U_id",U_id);
     }
-
     @Override
     protected Map<String, String> getParams() throws AuthFailureError {
 

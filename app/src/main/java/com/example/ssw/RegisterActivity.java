@@ -126,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
 
+
                 smpr.addStringParam("U_id",U_id);
                 smpr.addStringParam("U_pw",U_pw);
                 smpr.addStringParam("U_nick",U_nick);

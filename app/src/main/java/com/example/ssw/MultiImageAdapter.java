@@ -28,6 +28,7 @@ public class MultiImageAdapter extends RecyclerView.Adapter<MultiImageAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
 
 
+
         public ImageView image;
 
         ViewHolder(View itemView) {
